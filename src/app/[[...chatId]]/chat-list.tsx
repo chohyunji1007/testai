@@ -31,10 +31,13 @@ export default async function ChatList() {
 
   const chats = user ? await getChats(user.id) : []
 
+  console.log(chats)
   return (
     <div className="flex flex-col p-10 justify-between h-full">
       <div className="flex flex-colgap-y-4">
+        <Link key='new' href={'/'} className="truncate">New Chat</Link>
         {chats.map((chat) => (
+          
           <Link key={chat.id} href={`/${chat.id}`} className="truncate">
             {chat.name}
           </Link>

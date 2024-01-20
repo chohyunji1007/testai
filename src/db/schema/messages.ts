@@ -8,7 +8,8 @@ export const messages = sqliteTable("messages", {
   role: text("role", { enum: ["user", "assistant"] }).notNull(),
   content: text("content").notNull(),
   createdAt: text("created_at")
-    .default(sql`CURRENT_TIMESTAMP`)
+    // .default(sql`CURRENT_TIMESTAMP`)
+    .default(sql`DATETIME('now', 'localtime')`)
     .notNull(),
 })
 // id

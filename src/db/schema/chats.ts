@@ -8,7 +8,7 @@ export const chats = sqliteTable(
     userId: text("user_id").notNull(),
     name: text("name").notNull(),
     createdAt: text("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
+      .default(sql`DATETIME('now', 'localtime')`)
       .notNull(),
   },
   (table) => {

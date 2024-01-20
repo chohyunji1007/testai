@@ -58,7 +58,7 @@ export async function POST(req: Request) {
       ...allDBMessages,
       { role: "user", content },
     ],
-    model: "gpt-4-vision-preview",
+    model: "gpt-3.5-turbo-1106",
     stream: true,
     max_tokens: 4096,
   })
