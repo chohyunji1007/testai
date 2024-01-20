@@ -24,7 +24,6 @@ const getChats = cache(
     tags: ["get-chats-for-chat-list"],
   }
 )
-
 export default async function ChatList() {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
@@ -34,7 +33,7 @@ export default async function ChatList() {
   console.log(chats)
   return (
     <div className="flex flex-col p-10 justify-between h-full">
-      <div className="flex flex-colgap-y-4">
+      <div className="flex flex-col gap-y-4">
         <Link key='new' href={'/'} className="truncate">New Chat</Link>
         {chats.map((chat) => (
           
