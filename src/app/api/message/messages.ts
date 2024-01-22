@@ -25,7 +25,14 @@ export const initialProgrammerMessages: Message[] = [
 //      코드를 다른 언어나 프레임워크로 변환하거나 변환하도록 요청하지 않는 한, 코드를 제공하는 경우 제가 제공한 코드와 동일한 언어, 스타일 및 라이브러리를 사용해야 합니다.
 //      답변에는 다른 텍스트 없이 코드만 포함해야 합니다. 예제에 필요한 모든 코드만 포함하세요. 가장 중요한 작업은 다른 텍스트 없이 코드만으로 응답하는 것입니다.
       //냐
-      "You're developing a video summarizer for the web. You'll be summarizing using a video subtitle script, and you shouldn't summarize a video by assuming the topic of the video isn't in the subtitles, but rather by researching the topic and fact-checking the video. I also need to summarize the important time scripts in the video and what is needed there. Also, the subtitles are not accurate for Korean videos, so you should look at the subtitle script and correct any typos. And I'll explain in Korean",
+      // "You're developing a video summarizer for the web. You'll be summarizing using a video subtitle script, and you shouldn't summarize a video by assuming the topic of the video isn't in the subtitles, but rather by researching the topic and fact-checking the video. I also need to summarize the important time scripts in the video and what is needed there. Also, the subtitles are not accurate for Korean videos, so you should look at the subtitle script and correct any typos. Say the summary in English first, and then translate it into Korean.",
+      // "If I give you a video subtitle script, show the video title and a one-line summary first, then the full summary, and then the important time script in the following order: 1 title, 2 one-line summary, 3 full summary, 4 time script."
+      // +"Summarize the following in 5 bullet points."
+      "If I give you a video subtitle script, show it as 1. a title 2. a one-line summary 3. a summary using 5 bullet points 4. a time script."
+      +"Summarize the following in five bullet points and tell me in Korean."
+      // +"A title, a one-line summary, a summary with five bullet points, a time script in bold, a single line and a printout of the content."
+      +"I'll summarize it in English first, and then I'll translate it into Korean, but you don't have to show English. I don't understand English, so you must speak Korean."
+      +"Explain it at a level that a 6th grader can understand."
   },
   {
     role: "user",
@@ -48,8 +55,10 @@ export const initialProgrammerMessages: Message[] = [
       // 답변에는 다른 텍스트 없이 코드만 포함해야 합니다. 예제에 필요한 모든 코드만 포함하세요. 가장 중요한 작업은 다른 텍스트 없이 코드만으로 응답하는 것입니다.
 
       //냐
-      "I'm developing a web that summarizes YouTube content. "
-      +"If I put in a YouTube subtitle script, I want it to summarize the subtitles and explain the content of the video to me, and if I summarize only the subtitles, the summary of the video may be wrong because of the things that are not included in the subtitles, so I want to search for the topic of the video elsewhere and combine the search results with the video summary to make the summary more complete. "
-      +"I would like to see a full summary of the video, but also a timeline of the important parts of the video and a summary of those parts. The video includes the following summary You don't need to summarize",
+      // "I'm developing a web that summarizes YouTube content. "
+      // +"If I put in a YouTube subtitle script, I want it to summarize the subtitles and explain the content of the video to me, and if I summarize only the subtitles, the summary of the video may be wrong because of the things that are not included in the subtitles, so I want to search for the topic of the video elsewhere and combine the search results with the video summary to make the summary more complete. "
+      // +"I would like to see a full summary of the video, but also a timeline of the important parts of the video and a summary of those parts. The video includes the following summary You don't need to summarize"
+      // +"I only know korean."
+      "I need a YouTube summary. I'll give you a YouTube subtitle and ask you to summarize it into a title, a one-line summary, a full summary, and a timeline. Please write the title, one-line summary, full summary, and timestamp in bold and make it stand out, and then print out the content, and this only korean. Don't write title as title, write it as title, and make sure you use all of it and space it out. I only know Korean, so please explain it in a way that a 6th grader can understand. And to improve the accuracy of the summary, you should search for keywords about the topic of the video and include only accurate information in the summary. The most important thing is the accuracy of the video summary.",
   },
 ];

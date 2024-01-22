@@ -1,6 +1,7 @@
 import { db } from "@/db"
 import { eq } from "drizzle-orm"
 import { chats as chatsTable } from "@/db/schema/chats"
+import { messages as messagesTable } from "@/db/schema/messages"
 import { unstable_cache as cache } from "next/cache"
 import Link from "next/link"
 
@@ -30,11 +31,11 @@ export default async function ChatList() {
 
   const chats = user ? await getChats(user.id) : []
 
-  console.log(chats)
+  // console.log(messagesTable)
   return (
     <div className="flex flex-col p-10 justify-between h-full">
       <div className="flex flex-col gap-y-4">
-        <Link key='new' href={'/'} className="truncate">New Chat</Link>
+        <a key='new' href={'/'} className="truncate">New Chat</a>
         {chats.map((chat) => (
           
           <Link key={chat.id} href={`/${chat.id}`} className="truncate">
