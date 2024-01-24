@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import ChatInput from "@/components/chat-input"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -9,18 +9,22 @@ import { vscDarkPlus as dark } from "react-syntax-highlighter/dist/esm/styles/pr
 import { CreateChat } from "./actions"
 import { convertFileToBase64 } from "@/lib/utils"
 
+
 export default function ChatContent({
   createChat,
+  script,
   initialAssistantResponse = "",
+
 }: {
   createChat: CreateChat
+  script: string
   initialAssistantResponse?: string
 }) {
   const [assisnantResponse, setAssistantResponse] = useState(initialAssistantResponse)
   const [isLoading, setIsLoading] = useState(false)
   const abortControllerRef = useRef<AbortController | null>(null)
   const [chatId, setChatId] = useState("")
-
+  console.log("chat-content:",script)
   const handleSubmit = async (value: string, file?: File) => {
     let currentChatId = chatId
     if (!currentChatId) {
@@ -52,7 +56,7 @@ export default function ChatContent({
 
       body = JSON.stringify({ content, chatId: currentChatId })
     } else {
-      body = JSON.stringify({ content: value, chatId: currentChatId })
+      body = JSON.stringify({ content: script, chatId: currentChatId })
     }
 
     // console.log("submit", value, file);
@@ -101,6 +105,7 @@ export default function ChatContent({
     abortControllerRef.current.abort()
     abortControllerRef.current = null
   }
+
 
   return (
     <>

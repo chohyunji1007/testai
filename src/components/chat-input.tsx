@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GrowingTextArea from "./growing-text-area";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,7 @@ export default function ExpandingInput({
   onSubmit,
   onStop,
   isStreaming,
+
 }: {
   onSubmit?: (value: string, file?: File) => void;
   onStop?: () => void;
@@ -19,11 +20,13 @@ export default function ExpandingInput({
   const [selectedImage, setSelectedImage] = useState<File | undefined>(
     undefined
   );
+  // const [v_id , setVId] = useState("");
 
   const submit = (value: string) => {
     onSubmit?.(value, selectedImage);
     setContent("");
     setSelectedImage(undefined);
+    // setVId(get_v_id);
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +34,22 @@ export default function ExpandingInput({
   };
 
   const buttonDisabled = content.length === 0 || isStreaming;
+
+  // let get_v_id='';
+  // useEffect(() => {
+  //   // 클라이언트 측에서만 window 객체 사용
+  //   const currentUrl = window.location.href;
+  //   console.log('Current URL:', currentUrl);
+  //   const get_v = currentUrl.split('?v=')
+  //   get_v_id = get_v[1]
+  //   if (get_v_id == undefined || get_v_id == ''){
+  //     console.log('no video id');
+      
+  //   }else{
+  //     console.log('get_v_id = ', get_v_id);
+  //   }
+   
+  // }, []);
 
   return (
     <div className="w-full my-10">
@@ -64,6 +83,7 @@ export default function ExpandingInput({
               buttonDisabled && "opacity-50"
             )}
             disabled={buttonDisabled}
+            // get_v_id = {get_v_id}
             type="submit"
           >
             <svg

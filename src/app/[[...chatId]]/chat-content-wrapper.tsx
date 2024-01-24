@@ -19,5 +19,5 @@ export default async function ChatContentWrapper({
     .orderBy(desc(messagesTable.createdAt))
     .get()
 
-  return <ChatContent createChat={createChat} initialAssistantResponse={message?.content} />
+  return <ChatContent createChat={createChat} script={""} initialAssistantResponse={message?.content} />
 }
